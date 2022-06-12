@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO Calculate</title>
+
+    <link rel="stylesheet" href="https://portal.dichung.vn/static/cm/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            outline: none;
+        }
+        
+        html, body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #673AB7;
+        }
+
+        .card {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #fff;
+            padding-right: 20px;
+        }
+
+        .card-name {
+            padding: 30px;
+            background: #009688;
+            border: none;
+            box-sizing: border-box;
+            color: #fff;
+            font-size: 18px;
+            width: 35%;
+        }
+
+        .card-point {
+            margin-left: 20px;
+        }
+
+        .card-buffer {
+            flex: auto;
+            margin-left: 5px;
+            text-align: left;
+            color: #cdcdcd;
+        }
+
+        .card-add, .card-sub, .card-confirm {
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .card-add {
+            color: #4CAF50;
+        }
+
+        .card-sub {
+            color: #F44336;
+        }
+
+        .card-confirm {
+            color: #FFC107;
+        }
+
+        span {
+            pointer-events: none;
+        }
+
+        .copyright {
+            color: #000;
+            text-align: center;
+            margin: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+        <div class="card">
+            <input class="card-name" value="Player">
+            <div class="card-point">0</div>
+            <div class="card-buffer"></div>
+            <div class="card-add"><span class="fa fa-plus"></span></div>
+            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+        </div>
+    </div>
+
+    <div class="copyright">Good luck ^^</div>
+    
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+
+            const sep = (value) => {
+                return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            }
+
+            window.container.addEventListener('click', ({ target }) => {
+                const parent = target.parentElement
+                const className = target.className
+
+                if (className === 'card-add') {
+                    const buffer = parent.querySelector('.card-buffer')
+                    buffer.innerText = (+buffer.innerText.replace(/\+\-/g, '') || 0) + 1
+                    
+                    if (+buffer.innerText > 0) {
+                        buffer.innerText = '+' + buffer.innerText
+                    }
+                    
+                    return
+                }
+
+                if (className === 'card-sub') {
+                    const buffer = parent.querySelector('.card-buffer')
+                    buffer.innerText = (+buffer.innerText.replace(/\+\-/g, '') || 0) - 1
+
+                    if (+buffer.innerText > 0) {
+                        buffer.innerText = '+' + buffer.innerText
+                    }
+                    
+                    return
+                }
+
+                if (className === 'card-confirm') {
+                    const buffer = parent.querySelector('.card-buffer')
+                    const point = parent.querySelector('.card-point')
+                    point.innerText = sep((+buffer.innerText.replace(/\+\-/g, '') || 0) + (+point.innerText.replace(/\,/g, '') || 0))
+                    buffer.innerText = ''
+                    
+                    return
+                }
+            })
+        })
+    </script>
+</body>
+</html>
