@@ -21,33 +21,36 @@
             margin: 0;
             font-family: 'Roboto', sans-serif;
             color: #fff;
+            background: #673AB7;
         }
 
         .container {
             max-width: 500px;
             margin: 0 auto;
-            background: #673AB7;
         }
 
         .card {
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #fff;
+            /* border-bottom: 1px solid #fff; */
             padding-right: 20px;
         }
 
         .card-name {
-            padding: 30px;
+            padding: 20px;
             background: #009688;
             border: none;
             box-sizing: border-box;
             color: #fff;
             font-size: 18px;
             width: 35%;
+            margin: 10px;
+            border-radius: 4px;
         }
 
         .card-point {
             margin-left: 20px;
+            font-size: 21px;
         }
 
         .card-buffer {
@@ -79,10 +82,11 @@
             pointer-events: none;
         }
 
-        .copyright {
-            color: #000;
-            text-align: center;
-            margin: 15px;
+        .add {  
+            margin: 30px auto;
+            text-decoration: underline;
+            width: 120px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -105,57 +109,9 @@
             <div class="card-sub"><span class="fa fas fa-minus"></span></div>
             <div class="card-confirm"><span class="fa fas fa-check"></span></div>
         </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
-        <div class="card">
-            <input class="card-name" value="Player">
-            <div class="card-point">0</div>
-            <div class="card-buffer"></div>
-            <div class="card-add"><span class="fa fa-plus"></span></div>
-            <div class="card-sub"><span class="fa fas fa-minus"></span></div>
-            <div class="card-confirm"><span class="fa fas fa-check"></span></div>
-        </div>
     </div>
 
-    <div class="copyright">Good luck ^^</div>
+    <div id="add" class="add">Add more player</div>
     
     <script>
         window.addEventListener('DOMContentLoaded', () => {
@@ -198,6 +154,22 @@
                     
                     return
                 }
+            })
+
+            window.add.addEventListener('click', () => {
+                const card = document.createElement('div')
+
+                card.className = 'card'
+                card.innerHTML = `
+                    <input class="card-name" value="Player">
+                    <div class="card-point">0</div>
+                    <div class="card-buffer"></div>
+                    <div class="card-add"><span class="fa fa-plus"></span></div>
+                    <div class="card-sub"><span class="fa fas fa-minus"></span></div>
+                    <div class="card-confirm"><span class="fa fas fa-check"></span></div>
+                `
+
+                window.container.appendChild(card)
             })
         })
     </script>
